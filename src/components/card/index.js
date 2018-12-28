@@ -87,7 +87,6 @@ class RecipeReviewCard extends React.Component {
             </Avatar>
           }
           title="Marcos Henrique"
-          subheader="September 14, 2016"
         />
           {/* </IconButton> */}
           </div>
