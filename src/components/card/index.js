@@ -18,6 +18,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Divider from '@material-ui/core/Divider';
 import Icon from '@material-ui/core/Icon';
+import { FormHelperText } from '@material-ui/core';
 
 
 const styles = theme => ({
@@ -64,7 +65,7 @@ class RecipeReviewCard extends React.Component {
               R
             </Avatar>
           }
-          title="Shrimp and Chorizo Paella"
+          title="Hugo Oliveira"
           subheader="September 14, 2016"
         />
         <CardContent>
@@ -75,24 +76,21 @@ class RecipeReviewCard extends React.Component {
         </CardContent>
         <Divider />
         <div style={{display:'flex',justifyContent:'center'}}>
-        <Icon className={classes.icon}>arrow_downward</Icon>
+        <Icon className={classes.icon} style={{paddingTop:'20px'}}>arrow_downward</Icon>
         </div>
-        <Typography variant='overline' style={{padding:'10px 0 10px 10px'}}>
-          Quem recebeu ;)
-          </Typography>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
+          <div style={{display:'flex', justifyContent:'flex-left'}}>
+          {/* <IconButton aria-label="Add to favorites"> */}
             <CardHeader
           avatar={
             <Avatar aria-label="Recipe" className={classes.avatar} src="https://secure.gravatar.com/avatar/cc84b9f7a53cf2e0722aea4fb609e1fe.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2F7fa9%2Fimg%2Favatars%2Fava_0021-512.png">
               R
             </Avatar>
           }
-          title="Shrimp and Chorizo Paella"
+          title="Marcos Henrique"
           subheader="September 14, 2016"
         />
-            
-          </IconButton>
+          {/* </IconButton> */}
+          </div>
       </Card>
     );
   }

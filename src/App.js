@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { createMuiTheme } from '@material-ui/core/styles'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import Header from './common/Header'
-import Menu from './common/Menu'
 import Filter from './common/Filter'
 import Card from './components/card/index'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
