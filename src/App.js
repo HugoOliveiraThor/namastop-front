@@ -20,16 +20,25 @@ class App extends Component {
     })  
   }
 
+
   
   render() {
     const {comments} = this.state
-    console.log(comments)
     return (
         <React.Fragment>
           <Header />
-          <Filter />
+          <Filter data={comments} />
           <div className='containers-card'>
-          {comments && comments.map((d,idx) => <Card imgWhoReceived={d.photo} imgWhoSend={d.photo} commentary={d.text} key={idx} /> )}
+          {comments && comments.map((d,idx) =>  
+            (<Card 
+              imgWhoReceived={d.photo} 
+              imgWhoSend={d.photo} 
+              commentary={d.text} 
+              key={idx} 
+              realNameWhoReceive={d.realNameWhoReceive}  
+            />) 
+            
+          )}
           </div>
         </React.Fragment>
     );

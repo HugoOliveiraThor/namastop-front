@@ -43,7 +43,7 @@ const CardComments = props => (
             R
             </Avatar>
       }
-      title="Marcos Henrique"
+      title={props.realNameWhoReceive ? props.realNameWhoReceive : 'No name mencioned, I am sorry!' }
     />
       </div>
   </Card>

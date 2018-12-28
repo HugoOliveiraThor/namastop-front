@@ -9,3 +9,10 @@
 .icon-card {
   padding-top: 20px;
 }
+
+.containers-card {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}

@@ -8,7 +8,12 @@ class Filter extends Component {
 
   state = {
     date: '',
-    users: ''
+    users: '',
+    data: []
+  }
+
+  componentWillUpdate() {
+    
   }
 
   componentDidUpdate(prevProps) {
@@ -17,13 +22,22 @@ class Filter extends Component {
 
   handleChange = e => {
     this.setState({[e.target.name]: e.target.value})
+    const newValue = this.props.data.filter(d => {
+      console.log('Real_name', d.real_name)
+      console.log('indexOf',e.target.value)
+      console.log('TRUE', d.real_name.indexOf(e.target.value) !== -1)
+      return d.real_name.indexOf(e.target.value) !== -1
+    })
+    this.setState({})
   }
 
   handleSubmit = () => {
-      
+      console.log('users', this.state.users)
   }
 
   render() {
+    console.log('PROPS', this.props)
+    console.log('THISSSS', this.state.data)
     return (
   <Card className='card-filter'>
     <form className='form-container'>
