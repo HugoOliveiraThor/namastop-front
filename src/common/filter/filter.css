@@ -1,0 +1,19 @@
+.card-filter {
+  margin:10px 0 10px 0; 
+}
+
+.form-container {
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: #ffffff;
+  padding:20px;
+  border-radius: 4px;
+}
+.form-row > div {
+  display: flex;
+  
+  /* min-width: 200px; */
+  margin:0 10px;
+}

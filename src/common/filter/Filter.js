@@ -1,38 +1,14 @@
 import React, { Component } from 'react'
-import { MenuItem, TextField, Button } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import './filter.css' 
+import { TextField, Button } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
-import Cards from '../components/card/index';
 
 
-import AppBar from '@material-ui/core/AppBar';
+class Filter extends Component {
 
-import Grid from '@material-ui/core/Grid';
-
-
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-};
-
-
-
-
-class Form extends Component {
-
-  
   state = {
     date: '',
-    users: '',
-    list: '',
-    product: '',
-    quantity: '',
-    unit: '',
-    price: '',
-    showErrors: false
+    users: ''
   }
 
   componentDidUpdate(prevProps) {
@@ -40,7 +16,6 @@ class Form extends Component {
   }
 
   handleChange = e => {
-    console.log('e',e.target.name)
     this.setState({[e.target.name]: e.target.value})
   }
 
@@ -50,8 +25,8 @@ class Form extends Component {
 
   render() {
     return (
-<Card style={{margin:'10px 0 10px 0'}}>
-<form className='form-container'>
+  <Card className='card-filter'>
+    <form className='form-container'>
         <div className='form-row'>
         <TextField
               label="Remetente ou Destinatario"
@@ -77,11 +52,16 @@ class Form extends Component {
               error={!this.state.product && this.state.showErrors}
           />
           </div>
-          <Button variant='outlined' color='secondary' onClick={this.handleSubmit}>Pesquisar</Button>
-        </form>
-      </Card>
+          <Button 
+            variant='outlined' 
+            color='secondary' 
+            onClick={this.handleSubmit}>
+            Pesquisar
+          </Button>
+    </form>
+  </Card>
     )
     }
 }
 
-export default withStyles(styles)(Form);
+export default Filter

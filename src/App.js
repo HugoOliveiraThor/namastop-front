@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { createMuiTheme } from '@material-ui/core/styles'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import Header from './common/Header'
-import Filter from './common/Filter'
-import Card from './components/card/index'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Filter from './common/filter/Filter'
+import Card from './components/card/Index'
 
 
 
@@ -28,20 +27,14 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Router>
-            <React.Fragment>
-              <Header />
-              <Filter />
-              <div className='containers-card'>
-              <Card/>
-              <Card/>
-              </div>              
-              <Switch>
-                {/* <Route exact path='/' component={Home} /> */}
-                {/* <Route path='/lista/:action' component={CreateList} /> */}
-              </Switch>
-            </React.Fragment>
-          </Router>
+        <React.Fragment>
+          <Header />
+          <Filter />
+          <div className='containers-card'>
+            <Card />
+            <Card />
+          </div>
+        </React.Fragment>
       </MuiThemeProvider>
     );
   }
