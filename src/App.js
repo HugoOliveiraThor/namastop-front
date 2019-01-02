@@ -3,6 +3,7 @@ import Header from './common/Header'
 import Filter from './common/filter/Filter'
 import Card from './components/card/Index'
 import db from './firebase/init'
+import {getToDateTime, formatDataToBrazil} from './helpers/helpers'
 
 // Components
 import './App.css';
@@ -11,7 +12,6 @@ class App extends Component {
   state = {
     comments:[],
     data: [],
-    users:'',
     originalArray: []
   }
 
@@ -20,24 +20,18 @@ class App extends Component {
       let array = []
       users.docs.forEach(doc => {array.push(doc.data())})
       this.setState({comments:array, originalArray:array})
-    })  
+    })   
+     
   }
 
   _verifyIfStringExist = (stringVerify,stringFilter) => {
     return stringVerify.indexOf(stringFilter) !== -1
   }
 
-  _getToDateTime = (secs) => {
-    let t = new Date(1970, 0, 1); // Epoch
-    t.setSeconds(secs);
-    return t
-  }
-
+  
   filterItens = (obj) => {
     const {recipient = '', sender= ''} = obj
-    console.log(this.state.comments)
-    console.log(this._getToDateTime(this.state.comments[0].date.seconds))
-
+    
     if(recipient === '' && sender === '') {
       this.setState({ comments: this.state.originalArray })
     } else {
@@ -53,24 +47,6 @@ class App extends Component {
       this.setState({ comments:filterExtracted })
     }
   }
-
-  //remetente = sender
-  // destinatario = recipient
-
-
-// email: "hugooliveirahenrique@gmail.com"
-// id: "U7RQZNW1K"
-// idToWho: "U7RKZ6TD1"
-// photo: "https://secure.gravatar.com/avatar/cc84b9f7a53cf2e0722aea4fb609e1fe.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2F7fa9%2Fimg%2Favatars%2Fava_0021-512.png"
-// photoWhoReceive: "https://secure.gravatar.com/avatar/2dabad37f406e2b18d367b6952a94908.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2F7fa9%2Fimg%2Favatars%2Fava_0026-512.png"
-// presence: "away"
-// realNameWhoReceive: "José Barreto Teixeira De Paula "
-// real_name: "Hugo Oliveira"
-// real_name_normalized: "Hugo Oliveira"
-// sendToWho: "U7RKZ6TD1"
-// team_id: "T7RQZNVS9"
-// text: "vamos celebrar uma nova era, "
-
   
   render() {
     const {comments} = this.state
@@ -84,7 +60,8 @@ class App extends Component {
               imgWhoReceived={d.photo} 
               imgWhoSend={d.photo} 
               commentary={d.text} 
-              key={idx} 
+              key={idx}
+              date={d.date ? formatDataToBrazil(getToDateTime(d.date.seconds)) : '22/12/2018'} 
               realNameWhoReceive={d.realNameWhoReceive}  
             />) 
             

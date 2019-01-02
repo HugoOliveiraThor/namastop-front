@@ -12,23 +12,8 @@ class Filter extends Component {
     sender: ''
   }
 
-  componentWillUpdate() {
-    
-  }
-
-  componentDidUpdate(prevProps) {
-    
-  }
-
   handleChange = e => {
     this.setState({[e.target.name]: e.target.value})
-    // console.log('state',this.state)
-    // const newValue = this.props.data.filter(d => {
-    //   // console.log('Real_name', d.real_name)
-    //   // console.log('indexOf',e.target.value)
-    //   // console.log('TRUE', d.real_name.indexOf(e.target.value) !== -1)
-    //   return d.real_name.indexOf(e.target.value) !== -1
-    // })
   }
 
   render() {

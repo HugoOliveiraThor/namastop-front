@@ -7,7 +7,7 @@ import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import Icon from '@material-ui/core/Icon'
-
+import { getToDateTime } from '../../helpers/helpers'
 
 const CardComments = props => (
   <Card className='card-style'>
@@ -20,7 +20,7 @@ const CardComments = props => (
         </Avatar>
       }
       title="Hugo Oliveira"
-      subheader="September 14, 2016"
+      subheader={props.date}
     />
     <CardContent>
       <Typography component="p">
