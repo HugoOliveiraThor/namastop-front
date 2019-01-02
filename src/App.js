@@ -29,16 +29,17 @@ class App extends Component {
 
   filterItens = (obj) => {
     console.log('eee', obj)
-    if(obj.recipient === '' && obj.sender === '') {
+    const {recipient = '', sender= ''} = obj
+    if(recipient === '' && sender === '') {
       this.setState({ comments: this.state.originalArray })
     } else {
       const filterExtracted = this.state.comments.filter(d => {
-        if( obj.recipient && obj.sender && d.real_name && d.realNameWhoReceive ) { 
-          return this.verifyIfStringExist(d.real_name, obj.sender)  && this.verifyIfStringExist(d.realNameWhoReceive,obj.recipient)
-        } else if (obj.sender && !obj.recipient && d.real_name) {
-          return this.verifyIfStringExist(d.real_name,obj.sender)
-        } else if (!obj.sender && obj.recipient && d.realNameWhoReceive) {
-          return this.verifyIfStringExist(d.realNameWhoReceive,obj.recipient)
+        if ( recipient && sender && d.real_name && d.realNameWhoReceive ) { 
+          return this.verifyIfStringExist(d.real_name, sender)  && this.verifyIfStringExist(d.realNameWhoReceive, recipient)
+        } else if (sender && !recipient && d.real_name) {
+          return this.verifyIfStringExist(d.real_name,sender)
+        } else if (!sender && recipient && d.realNameWhoReceive) {
+          return this.verifyIfStringExist(d.realNameWhoReceive, recipient)
         }
       })
       this.setState({ comments:filterExtracted })
