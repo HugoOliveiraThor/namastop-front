@@ -23,23 +23,31 @@ class App extends Component {
     })  
   }
 
-  verifyIfStringExist = (stringVerify,stringFilter) => {
+  _verifyIfStringExist = (stringVerify,stringFilter) => {
     return stringVerify.indexOf(stringFilter) !== -1
   }
 
+  _getToDateTime = (secs) => {
+    let t = new Date(1970, 0, 1); // Epoch
+    t.setSeconds(secs);
+    return t
+  }
+
   filterItens = (obj) => {
-    console.log('eee', obj)
     const {recipient = '', sender= ''} = obj
+    console.log(this.state.comments)
+    console.log(this._getToDateTime(this.state.comments[0].date.seconds))
+
     if(recipient === '' && sender === '') {
       this.setState({ comments: this.state.originalArray })
     } else {
       const filterExtracted = this.state.comments.filter(d => {
         if ( recipient && sender && d.real_name && d.realNameWhoReceive ) { 
-          return this.verifyIfStringExist(d.real_name, sender)  && this.verifyIfStringExist(d.realNameWhoReceive, recipient)
+          return this._verifyIfStringExist(d.real_name, sender)  && this._verifyIfStringExist(d.realNameWhoReceive, recipient)
         } else if (sender && !recipient && d.real_name) {
-          return this.verifyIfStringExist(d.real_name,sender)
+          return this._verifyIfStringExist(d.real_name,sender)
         } else if (!sender && recipient && d.realNameWhoReceive) {
-          return this.verifyIfStringExist(d.realNameWhoReceive, recipient)
+          return this._verifyIfStringExist(d.realNameWhoReceive, recipient)
         }
       })
       this.setState({ comments:filterExtracted })
