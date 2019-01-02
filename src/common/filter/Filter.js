@@ -6,10 +6,10 @@ import Card from '@material-ui/core/Card';
 
 class Filter extends Component {
 
-  state = {
+  state = { 
     date: '',
-    users: '',
-    data: []
+    recipient: '',
+    sender: ''
   }
 
   componentWillUpdate() {
@@ -22,33 +22,38 @@ class Filter extends Component {
 
   handleChange = e => {
     this.setState({[e.target.name]: e.target.value})
-    const newValue = this.props.data.filter(d => {
-      console.log('Real_name', d.real_name)
-      console.log('indexOf',e.target.value)
-      console.log('TRUE', d.real_name.indexOf(e.target.value) !== -1)
-      return d.real_name.indexOf(e.target.value) !== -1
-    })
-    this.setState({})
-  }
-
-  handleSubmit = () => {
-      console.log('users', this.state.users)
+    // console.log('state',this.state)
+    // const newValue = this.props.data.filter(d => {
+    //   // console.log('Real_name', d.real_name)
+    //   // console.log('indexOf',e.target.value)
+    //   // console.log('TRUE', d.real_name.indexOf(e.target.value) !== -1)
+    //   return d.real_name.indexOf(e.target.value) !== -1
+    // })
   }
 
   render() {
-    console.log('PROPS', this.props)
-    console.log('THISSSS', this.state.data)
+    const { filterItens } = this.props  
+    const { recipient, sender } = this.state
     return (
   <Card className='card-filter'>
     <form className='form-container'>
         <div className='form-row'>
         <TextField
-              label="Remetente ou Destinatario"
-              name='users'
-              value={this.state.users}
+              label="Remetente"
+              name='sender'
+              value={sender}
               onChange={this.handleChange}
               margin="normal"
-              required
+              error={!this.state.list && this.state.showErrors}
+            />
+        </div>
+        <div className='form-row'>
+        <TextField
+              label="Destinatario"
+              name='recipient'
+              value={recipient}
+              onChange={this.handleChange}
+              margin="normal"
               error={!this.state.list && this.state.showErrors}
             />
         </div>
@@ -63,13 +68,13 @@ class Filter extends Component {
               InputLabelProps={{
                 shrink: true,
               }}
-              error={!this.state.product && this.state.showErrors}
+              error={!this.state.product && this.state.name}
           />
           </div>
           <Button 
             variant='outlined' 
             color='secondary' 
-            onClick={this.handleSubmit}>
+            onClick={() => filterItens(this.state)}>
             Pesquisar
           </Button>
     </form>
