@@ -64,7 +64,6 @@ class App extends Component {
               date={d.date ? formatDataToBrazil(getToDateTime(d.date.seconds)) : '22/12/2018'} 
               realNameWhoReceive={d.realNameWhoReceive}  
             />) 
-            
           )}
           </div>
         </React.Fragment>
